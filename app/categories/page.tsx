@@ -5,8 +5,8 @@ import { useEffect, useState } from 'react'
 
 export default function CategoriesPage() {
   const categories = [
-    { id: 1, name: "Men's Clothing", description: "Stylish outfits for men.", image: '/images/categories/1.png' },
-    { id: 2, name: "Women's Clothing", description: "Trendy and modern designs.", image: '/images/categories/2.png' },
+    { id: 1, name: "Men&apos;s Clothing", description: "Stylish outfits for men.", image: '/images/categories/1.png' },
+    { id: 2, name: "Women&apos;s Clothing", description: "Trendy and modern designs.", image: '/images/categories/2.png' },
     { id: 3, name: "Accessories", description: "Bags, belts, watches & more.", image: '/images/categories/3.png' },
     { id: 4, name: "Footwear", description: "Shoes, sneakers, and sandals.", image: '/images/categories/4.png' },
     { id: 5, name: "Electronics", description: "Smartphones, headphones, gadgets.", image: '/images/categories/5.png' },
@@ -19,7 +19,6 @@ export default function CategoriesPage() {
     { id: 12, name: "Pet Supplies", description: "Food, toys, and accessories for pets.", image: '/images/categories/12.png' },
   ]
 
-  // Animate cards sequentially
   const [loaded, setLoaded] = useState(false)
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 100)
@@ -37,10 +36,11 @@ export default function CategoriesPage() {
           <Link
             key={category.id}
             href={`/categories/${category.id}`}
-            className={`group relative bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-2xl rounded-3xl shadow-2xl p-6 flex flex-col items-center text-center overflow-hidden transition-transform duration-500 
+            className={`group relative bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-2xl rounded-3xl shadow-2xl p-6 flex flex-col items-center text-center overflow-hidden transition-transform duration-500
               hover:scale-105 hover:rotate-1 hover:shadow-3xl
               ${loaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}
-              delay-${index * 100}`}
+            `}
+            style={{ transitionDelay: `${index * 100}ms` }}
           >
             {/* Neon Glow Circles */}
             <div className="absolute -top-6 -left-6 w-28 h-28 bg-gradient-to-r from-pink-400 to-yellow-400 opacity-40 rounded-full blur-3xl animate-pulse-slow"></div>
