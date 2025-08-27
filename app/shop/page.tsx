@@ -1,6 +1,7 @@
 'use client'
 
 import { Star } from 'lucide-react'
+import Image from 'next/image'
 
 export default function ShopPage() {
   const products = [
@@ -121,20 +122,22 @@ export default function ShopPage() {
       </h1>
 
       <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-        {products.map((product, index) => (
+        {products.map((product) => (
           <div
             key={product.id}
-            className={`group relative bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-2xl rounded-3xl shadow-2xl p-6 flex flex-col items-center text-center overflow-hidden transition-transform duration-500 hover:scale-105 hover:rotate-1 hover:shadow-3xl`}
+            className="group relative bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-2xl rounded-3xl shadow-2xl p-6 flex flex-col items-center text-center overflow-hidden transition-transform duration-500 hover:scale-105 hover:rotate-1 hover:shadow-3xl"
           >
             {/* Floating Neon Circles */}
             <div className="absolute -top-6 -left-6 w-28 h-28 bg-gradient-to-r from-pink-400 to-yellow-400 opacity-40 rounded-full blur-3xl animate-pulse-slow"></div>
             <div className="absolute -bottom-6 -right-6 w-36 h-36 bg-gradient-to-r from-purple-400 to-indigo-400 opacity-30 rounded-full blur-3xl animate-ping-slow"></div>
 
             {/* Product Image */}
-            <img
+            <Image
               src={product.image}
               alt={product.name}
-              className="w-32 h-32 mb-4 object-contain relative z-10 drop-shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3"
+              width={128}
+              height={128}
+              className="mb-4 object-contain relative z-10 drop-shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3"
             />
 
             {/* Product Name */}
