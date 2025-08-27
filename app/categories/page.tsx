@@ -1,12 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 
 export default function CategoriesPage() {
   const categories = [
-    { id: 1, name: "Men&apos;s Clothing", description: "Stylish outfits for men.", image: '/images/categories/1.png' },
-    { id: 2, name: "Women&apos;s Clothing", description: "Trendy and modern designs.", image: '/images/categories/2.png' },
+    { id: 1, name: "Men's Clothing", description: "Stylish outfits for men.", image: '/images/categories/1.png' },
+    { id: 2, name: "Women's Clothing", description: "Trendy and modern designs.", image: '/images/categories/2.png' },
     { id: 3, name: "Accessories", description: "Bags, belts, watches & more.", image: '/images/categories/3.png' },
     { id: 4, name: "Footwear", description: "Shoes, sneakers, and sandals.", image: '/images/categories/4.png' },
     { id: 5, name: "Electronics", description: "Smartphones, headphones, gadgets.", image: '/images/categories/5.png' },
@@ -47,10 +48,12 @@ export default function CategoriesPage() {
             <div className="absolute -bottom-6 -right-6 w-36 h-36 bg-gradient-to-r from-purple-400 to-indigo-400 opacity-30 rounded-full blur-3xl animate-ping-slow"></div>
 
             {/* Category Image */}
-            <img
+            <Image
               src={category.image}
               alt={category.name}
-              className="w-28 h-28 mb-4 object-contain relative z-10 drop-shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3"
+              width={112} // w-28
+              height={112} // h-28
+              className="mb-4 object-contain relative z-10 drop-shadow-lg transform transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3"
             />
 
             {/* Category Name */}
