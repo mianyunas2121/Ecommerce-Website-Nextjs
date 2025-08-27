@@ -18,7 +18,7 @@ const testimonials = [
     name: "John Doe",
     role: "Tech Enthusiast",
     company: "Google",
-    feedback: "Amazing shopping experience! The product quality is top-notch and delivery was super fast. I've never experienced such seamless service before.",
+    feedback: "Amazing shopping experience! The product quality is top-notch and delivery was super fast. I&apos;ve never experienced such seamless service before.",
     avatar: "/images/avatar1.jpg",
     rating: 5,
     verified: true,
@@ -66,7 +66,7 @@ const testimonials = [
     name: "David Chen",
     role: "Product Manager",
     company: "Apple",
-    feedback: "Best online shopping experience I've had in years. The product recommendations were spot-on and the quality is exceptional for the price point.",
+    feedback: "Best online shopping experience I&apos;ve had in years. The product recommendations were spot-on and the quality is exceptional for the price point.",
     avatar: "/images/avatar5.jpg",
     rating: 5,
     verified: true,
@@ -77,7 +77,7 @@ const testimonials = [
 
 export function Testimonials() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [hoveredCard, setHoveredCard] = useState(null);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   const nextTestimonial = () => {
     setCurrentIndex((prev) => (prev + 1) % Math.ceil(testimonials.length / 3));
@@ -112,7 +112,7 @@ export function Testimonials() {
             </span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto">
-            Don't just take our word for it. Here's what our amazing customers have to say 
+            Don&apos;t just take our word for it. Here&apos;s what our amazing customers have to say 
             about their shopping experience with us.
           </p>
         </div>
@@ -131,7 +131,7 @@ export function Testimonials() {
                     transition-all duration-500 overflow-hidden
                     ${isHovered ? 'scale-105 -rotate-1' : 'scale-100 rotate-0'}
                   `}
-                //  onMouseEnter={() => setHoveredCard(testimonial.id)}
+                  onMouseEnter={() => setHoveredCard(testimonial.id)}
                   onMouseLeave={() => setHoveredCard(null)}
                 >
                   {/* Quote Icon Background */}
@@ -168,7 +168,7 @@ export function Testimonials() {
 
                     {/* Testimonial Content */}
                     <blockquote className="text-gray-700 text-lg leading-relaxed mb-6 italic">
-                      "{testimonial.feedback}"
+                      &quot;{testimonial.feedback}&quot;
                     </blockquote>
 
                     {/* Customer Info */}
