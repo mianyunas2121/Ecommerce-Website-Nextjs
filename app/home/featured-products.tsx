@@ -48,7 +48,7 @@ const featuredProducts: Product[] = [
     image: "/images/products/headphones.jpg",
     rating: 4.9,
     reviews: 156,
-    badge: "Editor&apos;s Choice",
+    badge: "Editor's Choice", // ✅ Fixed
     isNew: true,
     discount: 16
   },
@@ -126,9 +126,7 @@ export function FeaturedProducts() {
             return (
               <div
                 key={product.id}
-                className={`group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${
-                  isHovered ? 'scale-105' : 'scale-100'
-                }`}
+                className={`group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${isHovered ? 'scale-105' : 'scale-100'}`}
                 onMouseEnter={() => setHoveredProduct(product.id)}
                 onMouseLeave={() => setHoveredProduct(null)}
               >
@@ -139,15 +137,11 @@ export function FeaturedProducts() {
                     alt={product.name}
                     width={400}
                     height={300}
-                    className={`w-full h-56 object-cover transition-transform duration-500 ${
-                      isHovered ? 'scale-110' : 'scale-100'
-                    }`}
+                    className={`w-full h-56 object-cover transition-transform duration-500 ${isHovered ? 'scale-110' : 'scale-100'}`}
                   />
                   
                   {/* Overlay Gradient */}
-                  <div className={`absolute inset-0 bg-gradient-to-t from-black/20 to-transparent transition-opacity duration-300 ${
-                    isHovered ? 'opacity-100' : 'opacity-0'
-                  }`}></div>
+                  <div className={`absolute inset-0 bg-gradient-to-t from-black/20 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}></div>
 
                   {/* Badges */}
                   <div className="absolute top-4 left-4 flex flex-col gap-2">
@@ -176,16 +170,10 @@ export function FeaturedProducts() {
                   </div>
 
                   {/* Action Buttons */}
-                  <div className={`absolute top-4 right-4 flex flex-col gap-2 transition-all duration-300 ${
-                    isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'
-                  }`}>
+                  <div className={`absolute top-4 right-4 flex flex-col gap-2 transition-all duration-300 ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>
                     <button
                       onClick={() => toggleFavorite(product.id)}
-                      className={`w-10 h-10 rounded-full backdrop-blur-md transition-all duration-300 flex items-center justify-center ${
-                        isFavorite 
-                          ? 'bg-red-500 text-white scale-110' 
-                          : 'bg-white/80 text-gray-600 hover:bg-red-500 hover:text-white'
-                      }`}
+                      className={`w-10 h-10 rounded-full backdrop-blur-md transition-all duration-300 flex items-center justify-center ${isFavorite ? 'bg-red-500 text-white scale-110' : 'bg-white/80 text-gray-600 hover:bg-red-500 hover:text-white'}`}
                     >
                       <Heart className={`w-4 h-4 ${isFavorite ? 'fill-current' : ''}`} />
                     </button>
@@ -202,11 +190,7 @@ export function FeaturedProducts() {
                       {[...Array(5)].map((_, i) => (
                         <Star
                           key={i}
-                          className={`w-4 h-4 ${
-                            i < Math.floor(product.rating) 
-                              ? 'text-yellow-400 fill-current' 
-                              : 'text-gray-300'
-                          }`}
+                          className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`}
                         />
                       ))}
                     </div>
@@ -218,35 +202,21 @@ export function FeaturedProducts() {
                   </h3>
 
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="text-2xl font-bold text-gray-900">
-                      ${product.price}
-                    </span>
+                    <span className="text-2xl font-bold text-gray-900">${product.price}</span>
                     {product.originalPrice && (
-                      <span className="text-lg text-gray-500 line-through">
-                        ${product.originalPrice}
-                      </span>
+                      <span className="text-lg text-gray-500 line-through">${product.originalPrice}</span>
                     )}
                   </div>
 
                   {/* Add to Cart Button */}
-                  <button className={`
-                    w-full py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2
-                    ${isHovered 
-                      ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-105' 
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }
-                  `}>
+                  <button className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 ${isHovered ? 'bg-gradient-to-r from-blue-600 to-purple-600 text-white shadow-lg scale-105' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'}`}>
                     <ShoppingCart className="w-4 h-4" />
                     Add to Cart
                   </button>
                 </div>
 
                 {/* Shine Effect */}
-                <div className={`
-                  absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent
-                  transform transition-transform duration-1000 -skew-x-12
-                  ${isHovered ? 'translate-x-full' : '-translate-x-full'}
-                `}></div>
+                <div className={`absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent transform transition-transform duration-1000 -skew-x-12 ${isHovered ? 'translate-x-full' : '-translate-x-full'}`}></div>
               </div>
             );
           })}
