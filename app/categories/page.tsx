@@ -22,6 +22,7 @@ export default function CategoriesPage() {
   ]
 
   const [loaded, setLoaded] = useState(false)
+
   useEffect(() => {
     const timer = setTimeout(() => setLoaded(true), 100)
     return () => clearTimeout(timer)
@@ -51,11 +52,11 @@ export default function CategoriesPage() {
         className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
       >
         {categories.map((category) => (
-          <motion.div key={category.id}>
+          <motion.div key={category.id} variants={item}>
             <Link
               href={`/categories/${category.id}`}
               className="group relative bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-2xl rounded-3xl shadow-2xl p-6 flex flex-col items-center text-center overflow-hidden transition-transform duration-500 transform-gpu
-                hover:scale-105 hover:rotate-1 hover:-rotate-x-3 hover:shadow-3xl"
+                hover:scale-105 hover:rotate-1 hover:shadow-3xl"
             >
               {/* Neon Glow Circles */}
               <div className="absolute -top-6 -left-6 w-28 h-28 bg-gradient-to-r from-pink-400 to-yellow-400 opacity-40 rounded-full blur-3xl animate-pulse-slow"></div>
