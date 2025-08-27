@@ -12,6 +12,12 @@ export default function ContactPage2() {
     return () => clearTimeout(timer)
   }, [])
 
+  const cards = [
+    { icon: <Mail className="w-6 h-6 text-white" />, title: 'Email Us', info: 'contact@shop.com', gradient: 'from-primary-600 to-primary-500' },
+    { icon: <Phone className="w-6 h-6 text-white" />, title: 'Call Us', info: '+92 300 1234567', gradient: 'from-pink-400 to-yellow-400' },
+    { icon: <MapPin className="w-6 h-6 text-white" />, title: 'Visit Us', info: '123 Main Street, Punjab, Pakistan', gradient: 'from-purple-400 to-indigo-400' },
+  ]
+
   return (
     <main className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-yellow-50 relative overflow-hidden p-6">
       {/* Floating shapes */}
@@ -21,7 +27,7 @@ export default function ContactPage2() {
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
+        animate={loaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 1 }}
         className="text-center py-32"
       >
@@ -36,22 +42,18 @@ export default function ContactPage2() {
       {/* Contact Info Cards */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
+        animate={loaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 1, delay: 0.3 }}
         className="max-w-7xl mx-auto grid sm:grid-cols-1 md:grid-cols-3 gap-10 mb-20"
       >
-        {[
-          { icon: <Mail className="w-6 h-6 text-white" />, title: 'Email Us', info: 'contact@shop.com', gradient: 'from-primary-600 to-primary-500' },
-          { icon: <Phone className="w-6 h-6 text-white" />, title: 'Call Us', info: '+92 300 1234567', gradient: 'from-pink-400 to-yellow-400' },
-          { icon: <MapPin className="w-6 h-6 text-white" />, title: 'Visit Us', info: '123 Main Street, Punjab, Pakistan', gradient: 'from-purple-400 to-indigo-400' },
-        ].map((card, i) => (
+        {cards.map((card, i) => (
           <motion.div
             key={i}
             whileHover={{ scale: 1.05 }}
             transition={{ type: 'spring', stiffness: 200 }}
             className={`relative bg-gradient-to-br ${card.gradient} text-white rounded-3xl p-8 flex flex-col items-center justify-center shadow-2xl overflow-hidden`}
           >
-            <div className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-20 rounded-3xl transition-opacity"></div>
+            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 rounded-3xl transition-opacity"></div>
             <div className="bg-white/20 p-4 rounded-full mb-4">{card.icon}</div>
             <h3 className="text-2xl font-bold mb-2">{card.title}</h3>
             <p className="text-sm">{card.info}</p>
@@ -62,7 +64,7 @@ export default function ContactPage2() {
       {/* Contact Form */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
+        animate={loaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 1, delay: 0.6 }}
         className="max-w-3xl mx-auto bg-white/20 backdrop-blur-2xl rounded-3xl p-10 shadow-2xl"
       >
@@ -91,7 +93,7 @@ export default function ContactPage2() {
       {/* Map Section */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
+        animate={loaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 1, delay: 0.9 }}
         className="max-w-7xl mx-auto mt-20 rounded-3xl overflow-hidden shadow-2xl"
       >
@@ -100,6 +102,7 @@ export default function ContactPage2() {
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d13655.12345!2d73.0479!3d31.5820!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391905b5aeb4dfbb%3A0x123456789abcdef!2sPunjab%2C%20Pakistan!5e0!3m2!1sen!2sus!4v1693095300000"
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
+          title="Shop Location"
         ></iframe>
       </motion.section>
     </main>
