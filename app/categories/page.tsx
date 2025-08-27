@@ -52,7 +52,7 @@ export default function CategoriesPage() {
         className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10"
       >
         {categories.map((category) => (
-          <motion.div key={category.id} variants={item}>
+          <motion.div key={category.id} >
             <Link
               href={`/categories/${category.id}`}
               className="group relative bg-gradient-to-br from-white/20 to-white/5 backdrop-blur-2xl rounded-3xl shadow-2xl p-6 flex flex-col items-center text-center overflow-hidden transition-transform duration-500 transform-gpu
