@@ -48,7 +48,7 @@ const featuredProducts: Product[] = [
     image: "/images/products/headphones.jpg",
     rating: 4.9,
     reviews: 156,
-    badge: "Editor's Choice",
+    badge: "Editor&apos;s Choice",
     isNew: true,
     discount: 16
   },
