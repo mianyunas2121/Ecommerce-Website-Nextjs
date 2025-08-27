@@ -3,18 +3,8 @@
 import { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import {
-  ArrowRight,
-  ShoppingBag,
-  Star,
-  Heart,
-  ShoppingCart,
-  Eye,
-  TrendingUp,
-  Zap,
-  Award,
-  Trash2
-} from "lucide-react"
+import { ArrowRight, ShoppingBag, Star, ShoppingCart, TrendingUp, Zap, Award, Trash2 } from "lucide-react"
+import { motion } from "framer-motion"
 
 /* ================= HERO SLIDES ================= */
 const slides = [
@@ -248,7 +238,7 @@ export default function LandingPage() {
                     <div className="flex justify-between text-sm">
                       <span className="text-gray-600">Rating</span>
                       <div className="flex items-center space-x-1">
-                        {[...Array(slide.product.rating)].map((_, i) => (
+                        {[...Array(Math.floor(slide.product.rating))].map((_, i) => (
                           <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
                         ))}
                         <span className="text-gray-600 ml-1">({slide.product.reviews})</span>
@@ -308,9 +298,10 @@ export default function LandingPage() {
               const isFavorite = favorites.has(product.id)
 
               return (
-                <div
+                <motion.div
                   key={product.id}
-                  className={`group relative bg-white rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden ${isHovered ? "scale-105" : "scale-100"}`}
+                  whileHover={{ scale: 1.05 }}
+                  className="relative bg-white rounded-3xl shadow-lg overflow-hidden transition-all duration-300"
                   onMouseEnter={() => setHoveredProduct(product.id)}
                   onMouseLeave={() => setHoveredProduct(null)}
                 >
@@ -321,7 +312,8 @@ export default function LandingPage() {
                       alt={product.name}
                       width={400}
                       height={300}
-                      className={`w-full h-56 object-cover transition-transform duration-500 ${isHovered ? "scale-110" : "scale-100"}`}
+                      className="w-full h-56 object-cover transition-transform duration-500"
+                      priority
                     />
                     {/* Badges */}
                     <div className="absolute top-4 left-4 flex flex-col gap-2">
@@ -373,13 +365,13 @@ export default function LandingPage() {
 
                     <button
                       onClick={() => addToCart(product)}
-                      className={`w-full py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:scale-105`}
+                      className="w-full py-3 rounded-xl font-semibold flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white hover:scale-105 transition-transform"
                     >
                       <ShoppingCart className="w-4 h-4" />
                       Add to Cart
                     </button>
                   </div>
-                </div>
+                </motion.div>
               )
             })}
           </div>
@@ -407,25 +399,20 @@ export default function LandingPage() {
                 <div className="flex items-center gap-3">
                   <button
                     onClick={() => updateQuantity(item.id, "decrement")}
-                    className={`px-2 py-1 rounded-md ${
-                      item.quantity === 1 ? "bg-gray-100 text-gray-400 cursor-not-allowed" : "bg-gray-200 hover:bg-gray-300"
-                    }`}
+                    className={`px-2 py-1 rounded-md ${item.quantity === 1 ? "bg-gray-100 text-gray-400 cursor-not-allowed" : "bg-gray-200 hover:bg-gray-300"}`}
                     disabled={item.quantity === 1}
                   >
                     -
                   </button>
                   <span className="font-semibold">{item.quantity}</span>
-                  <button
-                    onClick={() => updateQuantity(item.id, "increment")}
-                    className="px-2 py-1 bg-gray-200 rounded-md hover:bg-gray-300"
-                  >
+                  <button onClick={() => updateQuantity(item.id, "increment")} className="px-2 py-1 bg-gray-200 rounded-md hover:bg-gray-300">
                     +
                   </button>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <p className="font-bold text-lg">${(item.price * item.quantity).toFixed(2)}</p>
-                  <button onClick={() => removeItem(item.id)} className="text-red-500 hover:text-red-600">
+                  <button onClick={() => removeItem(item.id)} aria-label="Remove item from cart" className="text-red-500 hover:text-red-600">
                     <Trash2 size={20} />
                   </button>
                 </div>
@@ -437,10 +424,7 @@ export default function LandingPage() {
               <p className="text-2xl font-extrabold">${totalPrice.toFixed(2)}</p>
             </div>
 
-            <button
-              className="mt-4 w-full bg-primary-600 hover:bg-primary-700 text-white py-3 rounded-xl text-lg font-semibold transition-all"
-              disabled={cart.length === 0}
-            >
+            <button className="mt-4 w-full bg-primary-600 hover:bg-primary-700 text-white py-3 rounded-xl text-lg font-semibold transition-all" disabled={cart.length === 0}>
               Proceed to Checkout
             </button>
           </div>

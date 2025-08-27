@@ -45,15 +45,17 @@ export default function ContactPage2() {
           { icon: <Phone className="w-6 h-6 text-white" />, title: 'Call Us', info: '+92 300 1234567', gradient: 'from-pink-400 to-yellow-400' },
           { icon: <MapPin className="w-6 h-6 text-white" />, title: 'Visit Us', info: '123 Main Street, Punjab, Pakistan', gradient: 'from-purple-400 to-indigo-400' },
         ].map((card, i) => (
-          <div
+          <motion.div
             key={i}
-            className={`relative bg-gradient-to-br ${card.gradient} text-white rounded-3xl p-8 flex flex-col items-center justify-center shadow-2xl hover:scale-105 transition-transform duration-500 group overflow-hidden`}
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: 'spring', stiffness: 200 }}
+            className={`relative bg-gradient-to-br ${card.gradient} text-white rounded-3xl p-8 flex flex-col items-center justify-center shadow-2xl overflow-hidden`}
           >
-            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-20 rounded-3xl transition-opacity"></div>
+            <div className="absolute inset-0 bg-white/10 opacity-0 hover:opacity-20 rounded-3xl transition-opacity"></div>
             <div className="bg-white/20 p-4 rounded-full mb-4">{card.icon}</div>
             <h3 className="text-2xl font-bold mb-2">{card.title}</h3>
             <p className="text-sm">{card.info}</p>
-          </div>
+          </motion.div>
         ))}
       </motion.section>
 
@@ -86,7 +88,7 @@ export default function ContactPage2() {
         </form>
       </motion.section>
 
-      {/* Optional Map Section */}
+      {/* Map Section */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
         animate={loaded ? { opacity: 1, y: 0 } : {}}

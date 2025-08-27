@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Star, Users, Truck, Shield } from 'lucide-react'
 
@@ -36,12 +37,15 @@ export default function AboutPage() {
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
+        animate={loaded ? { opacity: 1, y: 0 } : undefined}
         transition={{ duration: 1 }}
         className="relative max-w-7xl mx-auto text-center py-32"
       >
         <h1 className="text-6xl font-extrabold text-gray-900 drop-shadow-lg mb-6">
-          About <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-400">Us</span>
+          About{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-pink-400">
+            Us
+          </span>
         </h1>
         <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mb-12">
           We are a premium eCommerce platform delivering high-quality products, seamless shopping experiences, and exceptional service.
@@ -51,7 +55,7 @@ export default function AboutPage() {
       {/* Stats Section */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
+        animate={loaded ? { opacity: 1, y: 0 } : undefined}
         transition={{ duration: 1, delay: 0.3 }}
         className="max-w-7xl mx-auto py-20 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
       >
@@ -71,7 +75,7 @@ export default function AboutPage() {
       {/* Mission Section */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
+        animate={loaded ? { opacity: 1, y: 0 } : undefined}
         transition={{ duration: 1, delay: 0.6 }}
         className="max-w-5xl mx-auto py-20 text-center"
       >
@@ -102,7 +106,7 @@ export default function AboutPage() {
       {/* Team Section */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
+        animate={loaded ? { opacity: 1, y: 0 } : undefined}
         transition={{ duration: 1, delay: 0.9 }}
         className="max-w-7xl mx-auto py-20"
       >
@@ -114,11 +118,15 @@ export default function AboutPage() {
               className="group relative bg-white/10 backdrop-blur-3xl rounded-3xl p-6 flex flex-col items-center text-center shadow-2xl hover:scale-105 hover:shadow-3xl transition-transform duration-500 overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400 opacity-0 group-hover:opacity-20 rounded-3xl transition-opacity"></div>
-              <img
+              
+              <Image
                 src={member.image}
                 alt={member.name}
+                width={128}
+                height={128}
                 className="w-32 h-32 mb-4 object-cover rounded-full shadow-lg group-hover:scale-110 transition-transform duration-500 relative z-10"
               />
+              
               <h3 className="text-2xl font-bold mb-1 text-gray-900 relative z-10">{member.name}</h3>
               <p className="text-gray-700 relative z-10">{member.role}</p>
             </div>
@@ -129,7 +137,7 @@ export default function AboutPage() {
       {/* CTA Section */}
       <motion.section
         initial={{ opacity: 0, y: 50 }}
-        animate={loaded ? { opacity: 1, y: 0 } : {}}
+        animate={loaded ? { opacity: 1, y: 0 } : undefined}
         transition={{ duration: 1, delay: 1.2 }}
         className="max-w-5xl mx-auto text-center py-32"
       >
