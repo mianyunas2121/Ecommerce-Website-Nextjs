@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { ArrowRight, ShoppingBag, Star, Truck, Shield } from 'lucide-react'
+import { ArrowRight, ShoppingBag, Star } from 'lucide-react'
 
 const slides = [
   {
@@ -55,7 +55,7 @@ export function Hero() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % slides.length)
-    }, 5000) // auto-slide every 5s
+    }, 5000)
     return () => clearInterval(interval)
   }, [])
 
@@ -65,7 +65,6 @@ export function Hero() {
     <section
       className={`relative min-h-screen bg-gradient-to-br ${slide.bg} text-white overflow-hidden transition-all duration-1000`}
     >
-      {/* Decorative Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.1),transparent)]"></div>
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(255,255,255,0.05),transparent)]"></div>
@@ -73,7 +72,6 @@ export function Hero() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8 py-28 lg:py-36 min-h-screen flex flex-col justify-center">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center flex-1">
-          {/* Left Content */}
           <div className="text-center lg:text-left">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight mb-6 min-h-[12rem]">
               {slide.title}
@@ -85,17 +83,16 @@ export function Hero() {
               {slide.description}
             </p>
 
-            {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
               <Link
-                href="./categories"
+                href={slide.cta}
                 className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-yellow-300 to-pink-400 text-primary-800 font-semibold rounded-xl shadow-lg hover:scale-105 hover:shadow-2xl transition-transform"
               >
                 Start Shopping
                 <ArrowRight className="ml-2 w-5 h-5" />
               </Link>
               <Link
-                href="./categories"
+                href={slide.cta}
                 className="inline-flex items-center px-8 py-4 border-2 border-white/80 text-white font-semibold rounded-xl hover:bg-white hover:text-primary-700 transition-colors"
               >
                 Explore Categories
@@ -103,7 +100,6 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Right Side - Product Highlight */}
           <div className="relative">
             <div className="bg-white/10 backdrop-blur-md rounded-2xl p-8 shadow-2xl relative z-10">
               <div className="bg-white rounded-xl p-6 shadow-xl">
@@ -137,13 +133,11 @@ export function Hero() {
               </div>
             </div>
 
-            {/* Floating Glow Elements */}
             <div className="absolute -top-8 -right-8 w-28 h-28 bg-gradient-to-br from-yellow-400 to-pink-400 rounded-full opacity-60 blur-2xl animate-pulse"></div>
             <div className="absolute -bottom-8 -left-8 w-20 h-20 bg-gradient-to-br from-pink-400 to-purple-400 rounded-full opacity-60 blur-xl animate-ping"></div>
           </div>
         </div>
 
-        {/* Slider Navigation Dots */}
         <div className="flex justify-center mt-12 space-x-2">
           {slides.map((_, index) => (
             <button
